@@ -1,0 +1,18 @@
+[
+    {
+      "title": "Card 1",
+      "description": "This is the first card",
+      "image": "https://via.placeholder.com/300x200.png?text=Card+1"
+    },
+    {
+      "title": "Card 2",
+      "description": "This is the second card",
+      "image": "https://via.placeholder.com/300x200.png?text=Card+2"
+    },
+    {
+      "title": "Card 3",
+      "description": "This is the third card",
+      "image": "https://via.placeholder.com/300x200.png?text=Card+3"
+    }
+  ]
+  
