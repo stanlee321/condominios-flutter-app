@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';import 'dart:convert';
-
+import 'package:flutter/services.dart';
+import 'dart:convert';
 
 class CardListScreen extends StatelessWidget {
   const CardListScreen({super.key});
 
-
   Future<List<dynamic>> _fetchCards() async {
-      String data = await rootBundle.loadString('assets/dummy.json');
-      final cards = json.decode(data);
-      return cards;
+    String data = await rootBundle.loadString('assets/dummy.json');
+    final cards = json.decode(data);
+    return cards;
   }
 
   @override

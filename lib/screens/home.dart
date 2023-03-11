@@ -12,23 +12,22 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppTheme.background,
       drawer: const CustomDrawer(),
-      body:  Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal: size.width * 0.05, vertical: size.height * 0.03),
-                alignment: Alignment.topCenter,
-                child: GridView.count(
-        crossAxisCount: 2, // 2 columns
-        children: const <Widget>[
-          // OptionBox(Icons.home, '/'),
-          OptionBox(Icons.message, '/messages'),
-          OptionBox(Icons.person, '/profile'),
-          OptionBox(Icons.qr_code, '/generate_qr'),
-          OptionBox(Icons.check, '/validate_qr'),
-          OptionBox(Icons.toys_outlined, '/services')
-          // add more options as needed
-        ],
-      )
-        ),
+      body: Container(
+          padding: EdgeInsets.symmetric(
+              horizontal: size.width * 0.05, vertical: size.height * 0.03),
+          alignment: Alignment.topCenter,
+          child: GridView.count(
+            crossAxisCount: 2, // 2 columns
+            children: const <Widget>[
+              // OptionBox(Icons.home, '/'),
+              OptionBox(Icons.message, '/messages'),
+              OptionBox(Icons.person, '/profile'),
+              OptionBox(Icons.qr_code, '/generate_qr'),
+              OptionBox(Icons.check, '/validate_qr'),
+              OptionBox(Icons.toys_outlined, '/services')
+              // add more options as needed
+            ],
+          )),
       persistentFooterButtons: [
         Column(
           children: [
@@ -39,12 +38,12 @@ class HomeScreen extends StatelessWidget {
                   text: 'Mis QRs',
                   color: AppTheme.background,
                   path: '/my_qrs',
-                  ),
+                ),
                 _FooterButton(
                   text: 'Actividades',
                   color: AppTheme.background,
                   path: '/activities',
-                  ),
+                ),
               ],
             ),
             // Row(

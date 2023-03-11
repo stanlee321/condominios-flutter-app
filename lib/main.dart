@@ -3,11 +3,9 @@ import 'package:condominios/router/app_routes.dart';
 import 'package:condominios/theme/app_theme.dart';
 import 'package:provider/provider.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
-
 
 class AppState extends StatelessWidget {
   const AppState({super.key});
@@ -20,8 +18,6 @@ class AppState extends StatelessWidget {
     );
   }
 }
-
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

@@ -16,7 +16,6 @@ class CustomDrawer extends StatelessWidget {
       'icon': Icons.person_outline,
       'path': '/bio',
     },
-   
   ];
 
   @override

@@ -30,7 +30,8 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: InputDecoration(
                   labelText: "Email",
                 ),
-                validator: (input) => input!.contains('@') ? 'Please enter a valid email' : null,
+                validator: (input) =>
+                    input!.contains('@') ? 'Please enter a valid email' : null,
                 onSaved: (input) => _email = input!,
               ),
             ),
@@ -61,7 +62,9 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 obscureText: _isObscure,
-                validator: (input) => input!.length < 8 ? 'Your password needs to be at least 8 characters' : null,
+                validator: (input) => input!.length < 8
+                    ? 'Your password needs to be at least 8 characters'
+                    : null,
                 onSaved: (input) => _password = input!,
               ),
             ),

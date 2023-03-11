@@ -17,7 +17,7 @@ class BiometricAuthentication extends StatefulWidget {
 class _BiometricAuthenticationState extends State<BiometricAuthentication> {
   final _localAuthentication = LocalAuthentication();
   bool _isUserAuthorized = false;
-  
+
   Future<void> authenticateUser() async {
     bool isAuthorized = false;
     try {
@@ -26,7 +26,6 @@ class _BiometricAuthenticationState extends State<BiometricAuthentication> {
         useErrorDialogs: true,
         stickyAuth: false,
       );
-      
     } on PlatformException catch (exception) {
       if (exception.code == local_auth_error.notAvailable ||
           exception.code == local_auth_error.passcodeNotSet ||

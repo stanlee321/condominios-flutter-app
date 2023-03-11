@@ -59,7 +59,6 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-
                     Container(
                       margin: EdgeInsets.only(
                         top: size.height / 10,
@@ -79,7 +78,6 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-
                     GestureDetector(
                       onTap: () {},
                       child: const Text(
