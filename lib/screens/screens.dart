@@ -10,3 +10,4 @@ export 'package:condominios/screens/generate_qr.dart';
 export 'package:condominios/screens/activities.dart';
 export 'package:condominios/screens/services.dart';
 export 'package:condominios/screens/homepage.dart';
+export 'package:condominios/screens/signup_screen.dart';

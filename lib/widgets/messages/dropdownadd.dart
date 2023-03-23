@@ -1,4 +1,8 @@
+import 'package:condominios/blocs/messages_states.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:condominios/blocs/messages_blocs.dart';
+import 'package:condominios/blocs/messages_events.dart';
 
 class DropdownWithAddAndRemove extends StatefulWidget {
   @override
@@ -7,7 +11,6 @@ class DropdownWithAddAndRemove extends StatefulWidget {
 }
 
 class _DropdownWithAddAndRemoveState extends State<DropdownWithAddAndRemove> {
-  List<String> _dropdownItems = ["Item 1", "Item 2", "Item 3"];
   String? _selectedItem;
 
   final TextEditingController _textEditingController = TextEditingController();
@@ -16,66 +19,47 @@ class _DropdownWithAddAndRemoveState extends State<DropdownWithAddAndRemove> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: 50,
-          child: (_dropdownItems.isNotEmpty)
-              ? ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: _dropdownItems.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(_dropdownItems[index]),
-                            IconButton(
-                              icon: Icon(Icons.remove_circle),
-                              onPressed: () {
-                                if (_dropdownItems.isNotEmpty) {
-                                  setState(() {
-                                    _dropdownItems.removeAt(index);
-                                    if (_selectedItem ==
-                                        _dropdownItems[index]) {
-                                      _selectedItem = null;
-                                    }
-                                  });
-                                }
-                              },
+        BlocBuilder<MessagesBloc, MessagesState>(
+          builder: (context, state) {
+            if (state is PhoneNumbersUpdated) {
+              return state.phoneNumbers.isNotEmpty
+                  ? Wrap(
+                      spacing: 8.0, // Space between items
+                      runSpacing: 8.0, // Space between rows
+                      children: state.phoneNumbers
+                          .map(
+                            (phoneNumber) => Card(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(phoneNumber,
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),),
+                                    IconButton(
+                                      icon: Icon(Icons.remove_circle),
+                                      onPressed: () {
+                                        context.read<MessagesBloc>().add(
+                                            RemovePhoneNumber(phoneNumber));
+                                        setState(() {});
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                )
-              : Text('Add reference phone numbers'),
+                          )
+                          .toList(),
+                    )
+                  : Text('Add reference phone numbers');
+            }
+            return Container();
+          },
         ),
-        // PopupMenuButton<String>(
-        //   itemBuilder: (BuildContext context) {
-        //     return _dropdownItems.map((String item) {
-        //       return PopupMenuItem<String>(
-        //         value: item,
-        //         child: Text(item),
-        //       );
-        //     }).toList();
-        //   },
-        //   onSelected: (String? value) {
-        //     setState(() {
-        //       _selectedItem = value;
-        //     });
-        //   },
-        //   initialValue: _selectedItem,
-        //   child: Row(
-        //     children: [
-        //       Expanded(
-        //         child: Text(_selectedItem ?? "Select an item"),
-        //       ),
-        //       Icon(Icons.arrow_drop_down),
-        //     ],
-        //   ),
-        // ),
         SizedBox(height: 20),
         Row(
           children: [
@@ -90,11 +74,10 @@ class _DropdownWithAddAndRemoveState extends State<DropdownWithAddAndRemove> {
             SizedBox(width: 10),
             ElevatedButton(
               onPressed: () {
-                setState(() {
-                  _dropdownItems.add(_textEditingController.text);
-                  _selectedItem = _textEditingController.text;
-                  _textEditingController.clear();
-                });
+                context.read<MessagesBloc>().add(
+                    AddPhoneNumber(_textEditingController.text));
+                _textEditingController.clear();
+                setState(() {});
               },
               child: Text("Add"),
             ),

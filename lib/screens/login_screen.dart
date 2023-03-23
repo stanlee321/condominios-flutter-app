@@ -59,6 +59,24 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 20.0),
+                    // Not a member? Sign Up
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pushNamed("/signup");
+                          },
+                          child: const Text(
+                            "Not a member? Sign Up",
+                              style: TextStyle(
+                                color: Colors.black,
+                              )
+                          ),
+                        )
+                      ],
+                    ),
                     Container(
                       margin: EdgeInsets.only(
                         top: size.height / 10,

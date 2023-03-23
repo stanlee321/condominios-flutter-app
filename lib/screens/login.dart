@@ -1,4 +1,10 @@
+import 'package:condominios/blocs/app_blocs.dart';
+import 'package:condominios/blocs/app_events.dart';
+import 'package:condominios/blocs/app_states.dart';
+import 'package:condominios/models/activity_model.dart';
+import 'package:condominios/repos/user_repositories.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -74,13 +80,31 @@ class _LoginPageState extends State<LoginPage> {
               child: TextButton(
                 onPressed: _submit,
                 child: const Text(
-                  "LOGIN",
+                  "LOG IN",
                   style: TextStyle(
                     color: Colors.white,
                   ),
                 ),
               ),
             ),
+            // const SizedBox(height: 20.0),
+            // Not a member? Sign Up
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  "Not a member?",
+                    style: TextStyle(
+                      color: Colors.black,
+                    )
+                ),
+                TextButton(
+                  onPressed: () => Navigator.pushReplacementNamed(context, '/signup'),
+                  child: const Text("Sign Up"),
+                ),
+              ],
+            ),
+            
           ],
         ),
       ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:condominios/screens/screens.dart';
 
 class AppRoutes {
-  static const initialRoute = '/activities';
+  static const initialRoute = '/';
   static Map<String, Widget Function(BuildContext)> routes = {
     '/': (contex) => const LoginScreen(),
     '/home': (contex) => const HomeScreen(),
@@ -19,5 +19,6 @@ class AppRoutes {
     '/validate_qr': (contex) => const ValidateQRScreen(),
     '/services': (contex) => const ServiceScreen(),
     '/homepage': (contex) => const HomePage(),
+    '/signup': (contex) => SignUpScreen(),
   };
 }

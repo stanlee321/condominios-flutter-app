@@ -24,7 +24,8 @@ class HomeScreen extends StatelessWidget {
               OptionBox(Icons.person, '/profile'),
               OptionBox(Icons.qr_code, '/generate_qr'),
               OptionBox(Icons.check, '/validate_qr'),
-              OptionBox(Icons.toys_outlined, '/services')
+              OptionBox(Icons.toys_outlined, '/services'),
+              OptionBox(Icons.exit_to_app, '/'),
               // add more options as needed
             ],
           )),
